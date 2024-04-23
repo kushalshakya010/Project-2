@@ -1,11 +1,12 @@
 import { Box, Center, Group, PasswordInput, Progress, Text } from "@mantine/core";
 import { IconCheck, IconX } from "@tabler/icons-react";
+import { useEffect } from "react";
 
 const requirements = [
     {re: /[0-9]/, label: "Included number"},
     {re: /[a-z]/, label: "Included lowercase letter"},
     {re: /[A-Z]/, label: "Included uppercase letter"},
-    {re: /[$&+,:;=?@#'<>.^*()%!-]/, label: "Included special symbols"},
+    {re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: "Included special symbols"},
 
 ];
         function getStrength (password) {
@@ -37,8 +38,11 @@ const requirements = [
     }
     export function PasswordStrength({ value, setValue, setStrength,isSignin }){
         const strength = getStrength(value);
+
+        useEffect(()=> {
+            setStrength(strength);
+        },[])
         
-        setStrength(strength);
 
         const checks = requirements.map((requirement, index)=> (
             <PasswordRequirement 
@@ -55,9 +59,7 @@ const requirements = [
                 styles={{section: { transitionDuration: "0ms" } }}
                 value = {
                     value.length > 0 && index === 0 
-                    ? 100 
-                    : strength >= ((index+ 1) / 4 ) * 100
-                    ? 100
+                    ? 100 : strength >= ((index+ 1) / 4 ) * 100 ? 100
                     : 0 
                 }
                 color = {strength > 80 ? "teal" : strength > 50 ? "yellow" : "red" }

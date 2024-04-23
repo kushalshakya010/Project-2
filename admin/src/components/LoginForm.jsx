@@ -50,12 +50,7 @@ const handleSubmit = async(values)=> {
     <form 
     onSubmit={ form.onSubmit(handleSubmit)}
     className='flex flex-col gap4' >
-        <TextInput
-            withAsterisk
-            label = "Email Address"
-            palceholder = 'your@email.com'
-            {...form.getInputProps("email")}
-        />
+        <TextInput withAsterisk label = "Email Address" placeholder = 'your@email.com'{...form.getInputProps("email")} />
 
         <PasswordStrength 
         value= {passValue}

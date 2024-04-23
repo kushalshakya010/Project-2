@@ -24,6 +24,7 @@ const SignUpForm = ({toast, isSignin, setIsSignin, toggle, setFormClose}) => {
     const navigate = useNavigate();
 
     const form = useForm({
+        mode: "uncontrolled",
         initialValues: {
             email:"",
             firstName:"",
@@ -60,6 +61,7 @@ const SignUpForm = ({toast, isSignin, setIsSignin, toggle, setFormClose}) => {
     <form 
         onSubmit={form.onSubmit(handleSubmit)}
         className='flex flex-col gap-3'
+        
     >
         <div className='w-full flex-col gap-2 '>
             <TextInput 

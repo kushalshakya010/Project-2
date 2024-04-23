@@ -1,5 +1,5 @@
-import { app } from "./firebase";
 import { getDownloadURL, getStorage, ref,  uploadBytesResumable } from "firebase/storage";
+import { app } from "./firebase";
 
 
 export const API_URL = "http://localhost:8800"
@@ -10,7 +10,7 @@ export const uploadFIle = (setFileUrl, file) => {
     const name = new Date().getTime() + file.name;
     const storageRef = ref(storage, name);
 
-    const uploadTask = uploadBytesResumable(storageRef, File);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
         "state_changed",
@@ -33,7 +33,7 @@ export const uploadFIle = (setFileUrl, file) => {
         },
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=> {
-                console.log("Successfully uploaded")
+                console.log("Successfully uploaded", downloadURL)
                 setFileUrl(downloadURL);
             });
         }
@@ -41,3 +41,21 @@ export const uploadFIle = (setFileUrl, file) => {
 
 
 };
+
+export function formatNumber(num) {
+    if(num >= 1000000) {
+        return (num / 1000000 )/toFixed(1) + "M";
+    } else if (num >= 1000) {
+        return (num / 1000).toFixed(1) + "K";
+    }
+
+    return num.toString();
+}
+
+export function getInitials(fullName) {
+    const names = fullName.split(" ");
+    const initials = names.slice(0, 2).map((name) => name[0].toUpperCase());
+    const initialsStr = initials.join(" ");
+
+    return initialsStr;
+}

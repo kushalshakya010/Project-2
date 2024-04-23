@@ -43,11 +43,11 @@ function App() {
         <Route element = {<Layout/>}>
             <Route index path= "/" element={<Navigate to="dashboard" />} />
             
-            <Route index path= "/dashboard" element={<Dashboard/>} />
-            <Route index path= "/analytics" element={<Analytics/>} />
-            <Route index path= "/followers" element={<Followers/>} />
-            <Route index path= "/contents" element={<Content/>} />
-            <Route index path= "/write/:postID?" element={<WritePost/>} />
+            <Route path= "/dashboard" element={<Dashboard/>} />
+            <Route path= "/analytics" element={<Analytics/>} />
+            <Route path= "/followers" element={<Followers/>} />
+            <Route path= "/contents" element={<Content/>} />
+            <Route path= "/write/:postID?" element={<WritePost/>} />
 
         </Route>
 
