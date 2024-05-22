@@ -10,8 +10,8 @@ import { useSignin } from '../hooks/auth-hooks';
 
 
 const LoginForm = ( {toast, isSignin, setIsSignin, toggle, setFormClose}) => {
-    const {colorscheme } = useMantineColorScheme();
-    const theme = colorscheme === "dark";
+    const {colorScheme } = useMantineColorScheme();
+    const theme = colorScheme === "dark";
 
     const { signIn } = useStore();
     const { data, isPending, isSuccess, mutate} = useSignin(toast, toggle);

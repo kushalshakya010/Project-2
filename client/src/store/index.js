@@ -2,7 +2,7 @@ import {create} from "zustand"
 
 const useStores = create((set)=>({
 
-    user: JSON.parse(localStorage.getItem("user")),
+    user: JSON.parse(localStorage.getItem("userInfo")),
     isLoading: false,
 
     theme: localStorage.getItem("theme") ?? "light",

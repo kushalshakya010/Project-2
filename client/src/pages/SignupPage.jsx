@@ -8,6 +8,8 @@ import { Toaster, toast } from "sonner";
 import { Button, Divider, Inputbox, Logo } from "../components";
 import { getGoogleSignUp, emailSignUp } from "../utils/apiCalls"
 import useStores from "../store";
+import { saveUserInfo } from "../utils";
+import { uploadFile  } from "../utils";
 
 const SignupPage = () => {
   const {user, signIn, setIsLoading} = useStores();
@@ -37,20 +39,36 @@ const SignupPage = () => {
 
       setIsLoading(false);
 
-      if(user.success === true){
-          // saveUserInfo(user, signIn)
-        } 
-          else {
+      if(user?.success === true){
+        saveUserInfo(user, signIn)
+        } else {
             toast.error(user?.message)
           }
       },
     
   });
 
-  const handleSubmit = async()=> {};
+  const handleSubmit = async(e)=> {
+      e.preventDefault();
+
+      setIsLoading(true)
+      const result = await emailSignUp({ ...data, image: fileURL });
+      setIsLoading(false);
+
+      if(result?.success === true) {
+        saveUserInfo(result, signIn);
+      }
+      else {
+        toast.error(result?.message);
+      }
+  };
 
 
-  if (user.token) window.location.replace("/");
+  if (user?.token) window.location.replace("/");
+
+  useEffect(()=>{
+    file && uploadFile(setFileURL, file);
+  },[])
 
   return (
   <div className="flex w-full h-[100vh]">

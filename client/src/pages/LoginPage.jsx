@@ -4,11 +4,15 @@ import { FcGoogle } from "react-icons/fc";
 import { Toaster, toast } from "sonner";
 import { Link } from "react-router-dom";
 import {Button, Divider, Inputbox, Logo } from "../components";
+import { emailLogin, googleSignin } from "../utils/apiCalls";
 import useStores from "../store";
+import { saveUserInfo } from "../utils";
+
+
+
 
 const LoginPage = () => {
 const {user, signIn, setIsLoading} = useStores();
-
 const [data, setData] = useState({
   email: "",
   password: "",
@@ -22,11 +26,39 @@ const handleChange = (e) => {
   });
 };
 
-const googleLogin = async()=> {};
+const googleLogin = useGoogleLogin({
+  onSuccess: async (tokenResponse) => {
+    const user = await googleSignin(tokenResponse?.access_token);
 
-const handleSubmit = async()=> {};
+    if(user?.success === true) {
+      saveUserInfo(user, signIn);
+    } else {
+      toast.error("Something went wrong. Try signing up");
+    }
+  },
+  onError: (error) => {
+    console.log(error);
+    toast.error("login Error, Try again!");
+  },
+});
 
-if (user.token) window.location.replace("/");
+const handleSubmit = async(e)=> {
+  e.preventDefault();
+
+  setIsLoading(true);
+
+  const result = await emailLogin(data)
+
+  setIsLoading(false);
+
+  if(result?.success === true) {
+    saveUserInfo(result, signIn);
+  } else {
+    toast.error(result?.message);
+  }
+};
+
+if (user?.token) window.location.replace("/");
 
   return <div className="flex w-full h-[100vh]">
       <div className='hidden md:flex flex-col gap-y-4 w-1/3 min-h-screen bg-black items-center justify-center'>

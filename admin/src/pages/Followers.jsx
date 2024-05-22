@@ -12,7 +12,7 @@ import moment from "moment";
 
 
 const Followers = () => {
-  const { colorscheme } = useMantineColorScheme();
+  const { colorScheme } = useMantineColorScheme();
 
   const { user } = useStore();
   const location = useLocation();
@@ -27,8 +27,7 @@ const Followers = () => {
   );
   const [page, setPage ] = useState(searchParams.get("page") || 1);
 
-  const theme = colorscheme === "dark";
-
+  const theme = colorScheme === "dark";
   useEffect(()=> {
     const fetchFollowers = ()=> {
       updateURL({ page, navigate, location})
