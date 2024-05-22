@@ -81,7 +81,7 @@ const Sidebar = ({close = () => {} }) => {
       </Stack>
 
         <ActionIcon 
-        onClick={setColorScheme(colorScheme === "light"? "dark": "light")}
+        onClick={() => setColorScheme(colorScheme === "light"? "dark": "light")}
         variant = "default"
         size="xl"
         aria-label="Toggle color scheme"

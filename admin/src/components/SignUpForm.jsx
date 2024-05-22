@@ -24,7 +24,7 @@ const SignUpForm = ({toast, isSignin, setIsSignin, toggle, setFormClose}) => {
     const navigate = useNavigate();
 
     const form = useForm({
-        mode: "uncontrolled",
+        // mode: "uncontrolled",
         initialValues: {
             email:"",
             firstName:"",
@@ -39,16 +39,17 @@ const SignUpForm = ({toast, isSignin, setIsSignin, toggle, setFormClose}) => {
         },
     });
 
-    const handleSubmit = (values) => {
+    const handleSubmit = async(values) => {
+        console.log("HI");
         if (!isSignin && strength < 90) return;
 
         setFormClose(true);
 
         const res = mutate({
-            ...values,
-            password: passValue,
-            image: fileUrl,
-            accountType: "Writer",
+            ...values,                  //formdata
+            password: passValue,        //formdata
+            image: fileUrl,             //formdata
+            // accountType: "Writer",
         })
     };
 
@@ -69,14 +70,14 @@ const SignUpForm = ({toast, isSignin, setIsSignin, toggle, setFormClose}) => {
                 withAsterisk
                 label="First Name"
                 placeholder="First Name"
-                {...form.getInputProps("firstname")}
+                {...form.getInputProps("firstName")}
             />
             <TextInput 
                 className="w-full"
                 withAsterisk
                 label="Last Name"
                 placeholder="Last Name"
-                {...form.getInputProps("lastname")}
+                {...form.getInputProps("lastName")}
             />
             <TextInput 
                 withAsterisk
@@ -88,7 +89,7 @@ const SignUpForm = ({toast, isSignin, setIsSignin, toggle, setFormClose}) => {
                 value ={passValue}
                 setValue = {setPassValue}
                 setStrength = {setStrength}
-                isSignin = {false}
+                isSignin = {isSignin}
             />
 
             <Group className="w-full flex justify-between " mt="md" >

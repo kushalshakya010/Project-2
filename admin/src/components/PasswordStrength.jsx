@@ -41,7 +41,7 @@ const requirements = [
 
         useEffect(()=> {
             setStrength(strength);
-        },[])
+        },[strength])
         
 
         const checks = requirements.map((requirement, index)=> (

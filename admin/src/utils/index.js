@@ -44,7 +44,7 @@ export const uploadFIle = (setFileUrl, file) => {
 
 export function formatNumber(num) {
     if(num >= 1000000) {
-        return (num / 1000000 )/toFixed(1) + "M";
+        return (num / 1000000 ).toFixed(1) + "M";
     } else if (num >= 1000) {
         return (num / 1000).toFixed(1) + "K";
     }
@@ -59,3 +59,29 @@ export function getInitials(fullName) {
 
     return initialsStr;
 }
+
+export function createSlug(title){
+    return title
+    .toLowerCase()
+    .replace( /\s+/g, '=')              //replace spaces with -
+    .replace( /[^\w-]+/g, '')           //remove non-word characters
+    .replace( /--+/g, '-')              //replace multiple - with single -
+    .replace( /^-+/, '')                //trim - from start of text
+    .replace( /-+$/, '');               //trim - from end to text
+}
+
+export const updateURL = ({ page, navigate, location }) => {
+    const params = new URLSearchParams();
+
+    if (page && page > 1) {
+        params.set("page", page);
+    }
+
+    const newURL = `${location.pathname}? ${params.toString()}`;
+    navigate(newURL, {replace: true});
+
+    return newURL;
+};
+
+
+

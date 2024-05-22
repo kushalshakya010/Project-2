@@ -16,7 +16,11 @@ function Layout() {
 
   const location = useLocation()
 
-  return user?.token ? (
+
+// by pass gardeko login haru
+return true ? (
+    
+    // return user?.token ? (
     <div className="w-full h-screen"> 
       <Navbar/>
 
@@ -42,7 +46,6 @@ function App() {
       <Routes>
         <Route element = {<Layout/>}>
             <Route index path= "/" element={<Navigate to="dashboard" />} />
-            
             <Route path= "/dashboard" element={<Dashboard/>} />
             <Route path= "/analytics" element={<Analytics/>} />
             <Route path= "/followers" element={<Followers/>} />

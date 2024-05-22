@@ -4,9 +4,10 @@ import { FcGoogle } from "react-icons/fc";
 import { Toaster, toast } from "sonner";
 import { Link } from "react-router-dom";
 import {Button, Divider, Inputbox, Logo } from "../components";
+import useStores from "../store";
 
 const LoginPage = () => {
-const user = {};
+const {user, signIn, setIsLoading} = useStores();
 
 const [data, setData] = useState({
   email: "",
@@ -14,7 +15,6 @@ const [data, setData] = useState({
 });
 
 const handleChange = (e) => {
-  // const [name, value] = e.target; change to one below
   const { name, value } = e.target;
   setData({
     ...data,

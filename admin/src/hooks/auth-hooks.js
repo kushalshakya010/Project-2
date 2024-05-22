@@ -4,7 +4,7 @@ import { API_URL } from "../utils";
 
 export const useSignUp = (toast, toggle) => {
     return useMutation({
-        mutation: async (formData) => {
+        mutationFn: async (formData) => {
             toggle();
 
             const {data} = await axios.post(`${API_URL}/auth/register`, formData);
@@ -40,7 +40,7 @@ export const useSignUp = (toast, toggle) => {
 
 export const useSignin = (toast, toggle) => {
     return useMutation({
-        mutation: async (formData) => {
+        mutationFn: async (formData) => {
             toggle();
 
             const {data} = await axios.post(`${API_URL}/auth/login`, formData);

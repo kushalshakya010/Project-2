@@ -41,12 +41,12 @@ const Stats = ({ dt }) => {
         },
     ];
 
-    const stats = data?.map((stat)=>{
+    const stats = data?.map((stat, index)=>{
         const Icon = icons[stat.icon];
         const DiffIcon = stat.diff > 0 ? IconArrowUpRight : IconArrowDownRight;
 
         return (
-            <Paper withBorder p="md" key={stat.title}>
+            <Paper withBorder p="md" key={stat.title + index.toString()}>
                 <Group justify='space-between'>
                     <Text className='capitalize text-sm'>{stat.title}</Text>
                     <Icon size="1.4rem" stroke={1.5} />

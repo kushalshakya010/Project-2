@@ -26,6 +26,17 @@ const Dashboard = () => {
 
   return (
       <div className="w-full">
+
+ {/* Dashboard vanera lekne ki nai  */}
+        {/* <p 
+        className={`${
+          theme ? "text-white" : "text-slate-700"
+      } text-lg pb-1 font-semibold`}>Dashboard
+      
+      </p> */}
+
+
+
     <Stats dt={data} />
 
     <div className="w-full py-8 ">
@@ -33,6 +44,7 @@ const Dashboard = () => {
 
       <Graph dt={data?.viewStats}/>
     </div>
+    
     <div className="flex gap-6 flex-col md:flex-row py-6">
         {/* recent followers */}
         <div className="w-full md:w-1/3 flex flex-col">

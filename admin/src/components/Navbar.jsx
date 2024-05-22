@@ -44,6 +44,12 @@ const MobileDrawer = ({theme})=> {
             <BiMenu className="text-xl" /> 
         </Button>      
     </Drawer>
+
+    <Button className={theme? "text-white" : "text-slate-800"}
+            onClick={open}
+    >
+      <BiMenu className='text-xl' />
+    </Button>
     </>
   );
 
