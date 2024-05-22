@@ -2,15 +2,16 @@ import { useState } from "react";
 import { CATEGORIES, popular, posts } from "../utils/dummyData";
 import { Banner, Card, Pagination, PopularPosts, PopularWriters } from "../components";
 import { Link } from "react-router-dom";
+import { usePosts } from "../hooks/post-hooks";
 
 const Home = () => {
-  const numOfPages= 9;
-  const [page, setPage] = useState(0);
-
+  const {posts, numOfPages, setPage} = usePosts({writerId:" "});
   const randomIndex= Math.floor(Math.random() * posts.length);
 
 const handlePageChange = (val) => {
   setPage(val);
+
+  console.log(val);
 };
 
   if(posts.length < 1) 
@@ -25,6 +26,7 @@ const handlePageChange = (val) => {
     <Banner post = {posts[randomIndex]}/>
 
     <div className="px-0 lg:pl-20 2xl:px-20"> 
+    
     {/* Categories */}
     <div className="mt-6 md:mt-0">
       <p className="text-2xl font-semibold text-grey-600 dark:text-white"> 
