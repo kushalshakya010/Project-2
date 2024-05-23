@@ -1,20 +1,33 @@
 import { Link, useParams} from "react-router-dom";
 import useStores from "../store";
 import { useEffect, useState } from "react";
-import { popular, posts } from "../utils/dummyData";
 import { PopularPosts, PopularWriters, PostComments } from "../components";
 import Markdown from "markdown-to-jsx";
+import { getSinglePost } from "../utils/apiCalls";
+import { usePopularPosts } from "../hooks/post-hooks";
 
 const BlogDetails = () => {
-  console.log("inside blog details")
   const { setIsLoading } = useStores();
   
   const { id } = useParams();
-  const [post, setPost] = useState(posts[1]);
+  const [post, setPost] = useState([null]);
+
+  const popular = usePopularPosts
 
   useEffect(() => {
+    const fetchPost = async()=> {
+      setIsLoading(true);
+
+      const data = await getSinglePost(id);
+
+      setPost(data || {});
+
+      setIsLoading(false);
+
+    };
+
     if(id) {
-      //fetch posts from
+      fetchPost();
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
     }

@@ -1,17 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useStore from "../store";
 import { COMMENTS } from "../utils/dummyData";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import Profile from "../assets/profile.png";
-import { Toaster } from "sonner";
+import { Toaster, toast } from "sonner";
+import { deletePostComments, getPostComments, postComments } from "../utils/apiCalls";
 
 const PostComments = ({ postId }) => {
   const { user } = useStore();
-  const [comments, setComments] = useState(COMMENTS);
+  const [comments, setComments] = useState([]);
   const [desc, setDesc] = useState("");
 
-  const handleDeleteComment = async (id) => {};
+  const fetchComments = async() => {
+    const res = await getPostComments(postId);
+
+    setComments(res);
+
+  };
+
+  const handleDeleteComment = async (id) => {
+    const res = await deletePostComments(id, user?.token, postId);
+
+    if(res?.success){
+      fetchComments();
+    }
+  };
+
+  const handlePostComment = async (e) => {
+    e.preventDefault();
+
+    const res = await postComments(postId, user?.token, desc);
+
+    if(res?.success === true) {
+      setDesc(" ");
+      fetchComments();
+
+      toast.success("publish successfully");
+    } else {
+      toast.error("Something went wrong, please try again");
+    }
+   };
+
+  useEffect(()=>{
+    fetchComments();
+  },[postId]);
+
   return (
     <div className='w-full py-10'>
       <p className='text-lg text-slate-700 dark:text-slate-500 mb-6'>
@@ -19,7 +53,7 @@ const PostComments = ({ postId }) => {
       </p>
 
       {user?.token ? (
-        <form className='flex flex-col mb-6'>
+        <form className='flex flex-col mb-6' onSubmit={handlePostComment}>
           <textarea
             name='desc'
             onChange={(e) => setDesc(e.target.value)}

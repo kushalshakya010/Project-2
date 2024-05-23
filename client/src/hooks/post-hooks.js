@@ -54,3 +54,26 @@ export const usePosts = ({writerId}) => {
         page, posts, numOfPages, setPage,
     };
 };
+
+export const usePopularPosts = ()=> {
+    const [popular, setPopular] = useState([])
+
+    useEffect(()=> {
+        const fetchPosts = async() => {
+            try{
+                
+                const {data} = await axios.get(`${API_URL}/posts/popular`);
+    
+                setPopular(data?.data);
+            } catch (error) {
+                toast.error = ("Something went wrong.")
+                
+                const err = error?.response?.data || error?.response;
+                console.log(error);
+            }
+        };
+
+        fetchPosts();
+    },[]);
+    return popular;
+};

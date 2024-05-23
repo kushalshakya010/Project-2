@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { CATEGORIES, popular, posts } from "../utils/dummyData";
 import { Banner, Card, Pagination, PopularPosts, PopularWriters } from "../components";
 import { Link } from "react-router-dom";
-import { usePosts } from "../hooks/post-hooks";
+
+import { usePopularPosts, usePosts } from "../hooks/post-hooks";
+import { CATEGORIES, } from "../utils/dummyData";
 
 const Home = () => {
   const {posts, numOfPages, setPage} = usePosts({writerId:" "});
+  const popular = usePopularPosts();
   const randomIndex= Math.floor(Math.random() * posts.length);
 
 const handlePageChange = (val) => {
@@ -58,7 +60,7 @@ const handlePageChange = (val) => {
 
             <div className="w-full flex items-center justify-center">
               <Pagination 
-              totalPages={numOfPages} 
+              totalPages={parseInt(numOfPages)} 
               onPageChange={handlePageChange} 
               />
             </div>
