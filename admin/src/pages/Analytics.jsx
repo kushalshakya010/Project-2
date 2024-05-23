@@ -16,7 +16,7 @@ const Analytics = () => {
   const [numOfDays, setNumberOfDays ] = useState(28);
   const [visible, { toggle }] =  useDisclosure(false);
   const {data, isPending, mutate} = useAnalytics(toast, toggle, user?.token);
-
+console.log(data)
   const theme = colorScheme === "dark";
 
   useEffect(() => {

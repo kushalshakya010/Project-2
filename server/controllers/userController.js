@@ -66,11 +66,12 @@ export const followWritter = async (req, res, next) => {
     const followerId = req.body.user.userId;
     const { id } = req.params;
 
+
     const checks = await Followers.findOne({ followerId });
 
     if (checks)
       return res.status(201).json({
-        success: false,
+        success: true,
         message: "You're already following this writer.",
       });
 
@@ -80,6 +81,7 @@ export const followWritter = async (req, res, next) => {
       followerId,
       writerId: id,
     });
+
 
     writer?.followers?.push(newFollower?._id);
 

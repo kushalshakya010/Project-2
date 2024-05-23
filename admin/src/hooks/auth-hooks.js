@@ -8,7 +8,6 @@ export const useSignUp = (toast, toggle) => {
             toggle();
 
             const {data} = await axios.post(`${API_URL}/auth/register`, formData);
-            console.log(data)
             localStorage.setItem("user", JSON.stringify(data));
             return data;
         },
@@ -21,7 +20,6 @@ export const useSignUp = (toast, toggle) => {
             onSuccess: (data)=> {
                 toggle();
 
-                console.log(data);
                 toast.success(data?.message)
 
                 localStorage.setItem("otp_data", 
@@ -46,7 +44,6 @@ export const useSignin = (toast, toggle) => {
 
             const {data} = await axios.post(`${API_URL}/auth/login`, formData);
             localStorage.setItem("user", JSON.stringify(data));
-            console.log(data)
             return data;
         },
 

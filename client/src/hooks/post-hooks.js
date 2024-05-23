@@ -45,7 +45,7 @@ export const usePosts = ({writerId}) => {
                 setIsLoading(false);
             }
         };
-    window.scrollTo({top: 0, left: 0, behaviour:"smooth"});
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
 
     fetchPosts();
     },[page, writerId]);
@@ -63,13 +63,12 @@ export const usePopularPosts = ()=> {
             try{
                 
                 const {data} = await axios.get(`${API_URL}/posts/popular`);
-    
+
                 setPopular(data?.data);
             } catch (error) {
                 toast.error = ("Something went wrong.")
                 
                 const err = error?.response?.data || error?.response;
-                console.log(error);
             }
         };
 

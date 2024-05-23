@@ -14,12 +14,13 @@ const Graph = ({ dt }) => {
         {dt?.length > 0 ? (
             <AreaChart data={dt}>
                 <XAxis dataKey='_id' />
-                <YAxis />
+                <YAxis/>
+                <Tooltip/>
                 <Area 
                     type='monotone'
-                    datakey='Total'
-                    strok='#8884d8'
-                    fill='#8884d8'
+                    dataKey='Total'
+                    stroke="#8884d8" 
+                    fill="#8884d8"
                 />
             </AreaChart>
             ) : (

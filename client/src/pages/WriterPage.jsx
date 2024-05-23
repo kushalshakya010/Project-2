@@ -12,12 +12,13 @@ import {
 import useStore from "../store";
 import { formatNumber } from "../utils";
 import { usePopularPosts, usePosts } from "../hooks/post-hooks";
-import { followWriter } from "../utils/apiCalls";
+import { followWriter, getWriterInfo } from "../utils/apiCalls";
 
 const WriterPage = () => {
   const { user } = useStore();
 
   const { id } = useParams();
+
 
   const { posts, numOfPages, setPage } = usePosts({
     writerId: id,
@@ -32,12 +33,14 @@ const WriterPage = () => {
   };
   const fetchWriter = async()=> {
     const res = await getWriterInfo(id);
+console.log(res);
 
     setWriter(res);
   };
 
   const handleFollow = async()=> {
     const res = await followWriter(id, user?.token);
+    console.log(res)
     if(res.success === true)fetchWriter();
   };
 
@@ -46,8 +49,7 @@ const WriterPage = () => {
       fetchWriter();
   },[id]);
 
-    const followerIds = writer.followers.map((f) => f.followerId);
-
+    const followerIds = writer?.followers.map((f) => f.followerId);
 
   if (!writer)
     return (

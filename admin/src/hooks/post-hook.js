@@ -18,7 +18,6 @@ export const useAnalytics = (toast, toggle, token)=> {
                     }
                 }
             );
-
             return data;
         },
 
@@ -50,7 +49,7 @@ export const useCreatePost = (toast, toggle, token)=> {
                     }
                 }
             );
-
+            console.log(data)
             return data;
         },
 

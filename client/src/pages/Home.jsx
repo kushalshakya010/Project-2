@@ -9,7 +9,7 @@ const Home = () => {
   const {posts, numOfPages, setPage} = usePosts({writerId:""});
   const popular = usePopularPosts();
   const randomIndex= Math.floor(Math.random() * posts.length);
-
+console.log(popular);
 const handlePageChange = (val) => {
   setPage(val);
 
@@ -36,8 +36,9 @@ const handlePageChange = (val) => {
       </p>
 
       <div className="w-full flex flex-wrap py-10 gap-8">
-          {   CATEGORIES.map((cat) => (
-            <Link 
+          {   CATEGORIES.map((cat, index) => (
+            <Link
+            key={index} 
             to={`/category?cat=${cat?.label}`}
             className={ `flex items-center justify-center gap-3 ${cat.color} text-white font-semibold text-base px-4 py-2 rounded cursor-pointer` }>
             {cat.icon }

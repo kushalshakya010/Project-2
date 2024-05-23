@@ -96,6 +96,7 @@ export const googleSignUp = async (req, res, next) => {
 };
 
 export const login = async (req, res, next) => {
+  console.log(req.body);
   try {
     const { email, password } = req.body;
 
@@ -130,9 +131,9 @@ export const login = async (req, res, next) => {
       return next("Invalid email or password");
     }
 
-    if (user?.accountType === "Writer" && !user?.emailVerified) {
-      return next("Please verify your email address.");
-    }
+    // if (user?.accountType === "Writer" && !user?.emailVerified) {
+    //   return next("Please verify your email address.");
+    // }
 
     user.password = undefined;
 

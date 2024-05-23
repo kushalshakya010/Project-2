@@ -12,7 +12,7 @@ const BlogDetails = () => {
   const { id } = useParams();
   const [post, setPost] = useState([null]);
 
-  const popular = usePopularPosts
+  const popular = usePopularPosts();
 
   useEffect(() => {
     const fetchPost = async()=> {

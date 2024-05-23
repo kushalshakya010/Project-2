@@ -49,7 +49,7 @@ const SignUpForm = ({toast, isSignin, setIsSignin, toggle, setFormClose}) => {
             ...values,                  //formdata
             password: passValue,        //formdata
             image: fileUrl,             //formdata
-            // accountType: "Writer",
+            accountType: "Writer",
         })
     };
 

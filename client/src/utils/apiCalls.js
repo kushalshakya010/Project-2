@@ -36,13 +36,16 @@ export const googleSignin = async(token) => {
                 headers: {Authorization: `Bearer ${token}`},
             })
         .then((res) => res.data);
-
+       
         if(user?.sub) {
             const data = {
                 email: user.email,
             };
+
+            console.log(data);
             const result = await axios.post(`${API_URL}/auth/login`, data);
-        
+            console.log(result);
+            
             return result?.data;
         }
 
@@ -106,11 +109,14 @@ export const getPostComments = async(id)=> {
         return err;
     }
 };
-export const postComments = async(id, token, data) => {
+export const postComments = async(id, token, desc) => {
     try{
+        const data = {
+            "desc": desc
+        }
         const result = await axios.post(`${API_URL}/posts/comment/${id}`, data,
         {
-            headers: {Authorization: "Bearer" + token},
+            headers: {Authorization: "Bearer " + token},
         }
         );
         return result?.data;
@@ -127,7 +133,7 @@ export const deletePostComments = async(id, token, postId)=> {
     try{
         const result = await axios.delete(`${API_URL}/posts/comment/${id}/${postId}`,
         {
-            headers: {Authorization: "Bearer" + token},
+            headers: {Authorization: "Bearer " + token},
         }
         );
         return result?.data;
@@ -144,7 +150,6 @@ export const deletePostComments = async(id, token, postId)=> {
 export const getWriterInfo = async (id)=> {
     try{
         const {data}=await axios.get(`${API_URL}/users/get-user/${id}`);
-
         return data?.data;
     } catch (error) {
         const err = error?.response?.data || error?.response;
@@ -161,9 +166,11 @@ export const followWriter = async (id, token)=> {
                 Authorization: `Bearer ${token}`,
             },
         });
+
+        console.log(res)
         
 
-        return data?.data;
+        return res?.data;
     } catch (error) {
         const err = error?.response?.data || error?.response;
 

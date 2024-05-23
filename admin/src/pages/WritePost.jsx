@@ -61,7 +61,7 @@ const WritePost = () => {
       mutate ({
         title, 
         slug, 
-        car: category, 
+        cat: category, 
         img: fileURL, 
         desc: editor.getHTML(),
       });

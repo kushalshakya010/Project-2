@@ -25,6 +25,8 @@ const Followers = () => {
     toggle,
     user?.token
   );
+
+  console.log(data)
   const [page, setPage ] = useState(searchParams.get("page") || 1);
 
   const theme = colorScheme === "dark";
@@ -93,7 +95,7 @@ const Followers = () => {
 
               <Table.Td>
                 <div className="flex gap-1 items-center">
-                  {formatNumber(followerId?.follower.length ?? 0)}
+                  {formatNumber(followerId?.followers.length ?? 0)}
                 </div>
               </Table.Td>
 

@@ -206,6 +206,8 @@ export const commentPost = async (req, res, next) => {
     const { userId } = req.body.user;
     const { id } = req.params;
 
+    console.log(req.body, userId, id)
+
     if (desc === null) {
       return res.status(404).json({ message: "Comment is required." });
     }
@@ -346,6 +348,7 @@ export const getPopularContents = async (req, res, next) => {
         $limit: 5,
       },
     ]);
+    console.log(writers)
 
     res.status(200).json({
       success: true,

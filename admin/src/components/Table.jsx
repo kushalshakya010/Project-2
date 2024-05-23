@@ -71,7 +71,7 @@ export const RecentPostTable = ({data, theme}) => {
                     <span className="text-[10px] text-rose-600">{el?.cat}</span>
                 </>
             </Table.Td>
-            <Table.Td>{formatNumber(el?.views.length)}</Table.Td>
+            <Table.Td>{formatNumber(el?.views?.length)}</Table.Td>
             <Table.Td>{moment(el?.createdAt).fromNow()}</Table.Td>
         </Table.Tr>
     ));
