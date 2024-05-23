@@ -13,7 +13,7 @@ export const useAnalytics = (toast, toggle, token)=> {
                 `${API_URL}/posts/admin-analytics?query = ${val}`,
                 null, 
                 {
-                    header: {
+                    headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 }
@@ -45,7 +45,7 @@ export const useCreatePost = (toast, toggle, token)=> {
                 `${API_URL}/posts/create-post`,
                 formData, 
                 {
-                    header: {
+                    headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 }
@@ -79,7 +79,7 @@ export const useContent = (toast, toggle, token)=> {
                 `${API_URL}/posts/admin-content?page=${page}`,
                 null, 
                 {
-                    header: {
+                    headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 }
@@ -112,7 +112,7 @@ export const useDeletePost = (toast, token)=> {
             const { data } = await axios.delete(
                 `${API_URL}/posts/${id}`,
                 {
-                    header: {
+                    headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 }
@@ -139,7 +139,7 @@ export const useAction = (toast, token)=> {
                 `${API_URL}/posts/update/`+ id,
                 {status : status},
                 {
-                    header: {
+                    headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 }
@@ -176,7 +176,7 @@ export const useDeleteComment = (token)=> {
             const { data } = await axios.delete(
                 `${API_URL}/posts/comment/${id}/${postId}`,
                 {
-                    header: {
+                    headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 }

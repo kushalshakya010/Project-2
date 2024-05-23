@@ -40,7 +40,7 @@ const SignUpForm = ({toast, isSignin, setIsSignin, toggle, setFormClose}) => {
     });
 
     const handleSubmit = async(values) => {
-        console.log("HI");
+        
         if (!isSignin && strength < 90) return;
 
         setFormClose(true);

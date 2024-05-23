@@ -10,7 +10,7 @@ const useStore = create((set) => ({
 
   setOPT: (val) => set((state) => ({ isOTPLevel: val })),
 
-  signout: () => set({ user: {} }),
+  signOut: () => set({ user: {} }),
 
   setSignInModal: (val) =>
     set(

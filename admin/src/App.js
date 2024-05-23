@@ -9,10 +9,11 @@ import Analytics from "./pages/Analytics.jsx";
 import Followers from "./pages/Followers.jsx";
 import Content   from "./pages/Content.jsx";
 import WritePost from "./pages/WritePost.jsx";
+import useStore from "./store/index.js";
 
 
 function Layout() {
-  const user = {}
+  const { user } = useStore();
 
   const location = useLocation()
 
@@ -45,7 +46,7 @@ function App() {
     <main className='w-full min-h-screen '>
       <Routes>
         <Route element = {<Layout/>}>
-            <Route index path= "/" element={<Navigate to="dashboard" />} />
+            <Route index path= "/" element={<Navigate to="/dashboard" />} />
             <Route path= "/dashboard" element={<Dashboard/>} />
             <Route path= "/analytics" element={<Analytics/>} />
             <Route path= "/followers" element={<Followers/>} />

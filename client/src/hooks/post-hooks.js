@@ -16,7 +16,7 @@ export const usePosts = ({writerId}) => {
     const [ searchParams ] = useSearchParams();
 
     const [ page, setPage ] = useState(searchParams.get("page") || 1 );
-    const [ category, setCategory ] = useState(searchParams.get("cat") || " ");
+    const [ category, setCategory ] = useState(searchParams.get("cat") || "");
 
     const [ posts, setPosts ] = useState([]);
     const [numOfPages, setNumOfPages ] = useState(1);
@@ -31,7 +31,7 @@ export const usePosts = ({writerId}) => {
                 const {data} = await axios.get(`${API_URL}/posts?cat=${category}&page=${page}&writerId=${writerId || ""}`
 
                 );
-
+                    console.log(data?.data);
                 setPosts(data?.data || [] );
                 setNumOfPages(data?.numOfPages);
             }

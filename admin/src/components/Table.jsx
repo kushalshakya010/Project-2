@@ -77,7 +77,7 @@ export const RecentPostTable = ({data, theme}) => {
     ));
 
     return (
-        <Table highlightOnHover withTableBorders>
+        <Table highlightOnHover withTableBorder>
         <Table.Thead>
             <Table.Tr>
                 <Table.Th>Post Title</Table.Th>

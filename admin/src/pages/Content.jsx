@@ -9,7 +9,7 @@ import { formatNumber, updateURL } from "../utils";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineSetting } from 'react-icons/ai';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import {MdMessage, MdOutlineDeleteOutline} from 'react-icons/md';
-import { moment } from "moment";
+import * as moment from 'moment/moment'
 import Loading from "../components/Loading";
 
 import clsx from "clsx";
@@ -52,7 +52,7 @@ const fetchContent = async ()=> {
 const handleComment = async (id, size)=>{
 
   // yo chai { > instead of === } sign raknu parxa after content is there
-  if(size === 0){
+  if(size > 0){
     setCommentId(id);
     setOpen(true);
   }

@@ -6,7 +6,7 @@ import { usePopularPosts, usePosts } from "../hooks/post-hooks";
 import { CATEGORIES, } from "../utils/dummyData";
 
 const Home = () => {
-  const {posts, numOfPages, setPage} = usePosts({writerId:" "});
+  const {posts, numOfPages, setPage} = usePosts({writerId:""});
   const popular = usePopularPosts();
   const randomIndex= Math.floor(Math.random() * posts.length);
 

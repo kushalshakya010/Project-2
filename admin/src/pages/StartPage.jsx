@@ -36,7 +36,7 @@ const StartPage = ()=> {
     };
 
     const handleGetStarted = () => {
-        open()
+        open();
         setSignInModal(!signInModal)
     }
 

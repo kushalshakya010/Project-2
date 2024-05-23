@@ -29,7 +29,7 @@ const MobileDrawer = ({theme})=> {
       opened = { opened }
       
       onClose= { close }
-      overlayProps = {{BackgroundOpacity : 0.5, blur:4}}
+      overlayProps = {{backgroundOpacity : 0.5, blur:4}}
       >
         <Sidebar close = {close} />
 

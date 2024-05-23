@@ -254,6 +254,7 @@ export const updatePost = async (req, res, next) => {
 
 export const getPosts = async (req, res, next) => {
   try {
+    console.log(req.query);
     const { cat, writerId } = req.query;
 
     let query = { status: true };
@@ -271,12 +272,14 @@ export const getPosts = async (req, res, next) => {
       })
       .sort({ _id: -1 });
     // pagination
+
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 5;
     const skip = (page - 1) * limit;
 
     //records count
     const totalPost = await Posts.countDocuments(queryResult);
+    console.log(totalPost);
 
     const numOfPages = Math.ceil(totalPost / limit);
 
