@@ -9,11 +9,9 @@ const Home = () => {
   const {posts, numOfPages, setPage} = usePosts({writerId:""});
   const popular = usePopularPosts();
   const randomIndex= Math.floor(Math.random() * posts.length);
-console.log(popular);
 const handlePageChange = (val) => {
   setPage(val);
 
-  console.log(val);
 };
 
   if(posts.length < 1) 
@@ -46,7 +44,7 @@ const handlePageChange = (val) => {
              <span>{cat.label}</span>
             </Link>
           ))}      
-          </div>
+    </div>
         </div>
 
         {/* BLOG POSTS */}

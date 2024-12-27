@@ -13,7 +13,6 @@ const CategoriesPage = () => {
   const handlePageChange = (val) => {
     setPage(val);
 
-    console.log(val);
   };
 
   return (

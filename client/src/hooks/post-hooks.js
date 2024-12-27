@@ -31,7 +31,6 @@ export const usePosts = ({writerId}) => {
                 const {data} = await axios.get(`${API_URL}/posts?cat=${category}&page=${page}&writerId=${writerId || ""}`
 
                 );
-                    console.log(data?.data);
                 setPosts(data?.data || [] );
                 setNumOfPages(data?.numOfPages);
             }

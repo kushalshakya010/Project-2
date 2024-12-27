@@ -18,7 +18,6 @@ const Dashboard = () => {
   const theme = colorScheme === "dark";
 
   const {data, isPending, mutate} = useAnalytics(toast, toggle, user?.token);
-
   useEffect(() => {
     mutate()
   }, []);
@@ -50,7 +49,7 @@ const Dashboard = () => {
         <div className="w-full md:w-1/3 flex flex-col">
           <span className={clsx("py-5 text-base font-medium", theme ? "text-white" : "text-slate-600")}>Recent Followers</span>
 
-          <RecentPostTable data={data?.last5Followers} theme={theme} />
+          <RecentFollowersTable data={data?.last5Followers} theme={theme} />
         </div>
 
         {/* Top 5 Contents */}

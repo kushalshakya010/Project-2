@@ -42,9 +42,7 @@ export const googleSignin = async(token) => {
                 email: user.email,
             };
 
-            console.log(data);
             const result = await axios.post(`${API_URL}/auth/login`, data);
-            console.log(result);
             
             return result?.data;
         }
@@ -63,7 +61,7 @@ export const emailSignUp = async (data)=> {
 
         return result?.data
     } catch (error) {
-        const err = err?.response?.data || error?.response;
+        const err = error?.response?.data || error?.response;
         console.log(error);
 
         return err;
@@ -76,7 +74,7 @@ export const emailLogin = async (data)=> {
 
         return result?.data
     } catch (error) {
-        const err = err?.response?.data || error?.response;
+        const err = error?.response?.data || error?.response;
         console.log(error);
 
         return err;
@@ -167,7 +165,6 @@ export const followWriter = async (id, token)=> {
             },
         });
 
-        console.log(res)
         
 
         return res?.data;

@@ -27,7 +27,7 @@ const mockdata = [
   {icon: IconSettings, label: "Settings" },
 ];
 
-const NavbarLink = ({icon: Icon, IconCalendarStats, label, active, onClick}) => {
+const NavbarLink = ({icon: Icon, label, active, onClick}) => {
   return (
     <Tooltip 
     label={label} 
@@ -36,7 +36,7 @@ const NavbarLink = ({icon: Icon, IconCalendarStats, label, active, onClick}) => 
     >
       <UnstyledButton 
         onClick={onClick}
-        className={clsx("flex items-center gap-2 px-4 py-1.5 rounded-full".active ? "bg-black text-white" : "" 
+        className={clsx("flex items-center gap-2 px-4 py-1.5 rounded-full",active ? "bg-black text-white" : "" 
       )}
         data-active = {active || undefined}
 

@@ -29,18 +29,15 @@ const WriterPage = () => {
   const handlePageChange = (val) => {
     setPage(val);
 
-    console.log(val);
   };
   const fetchWriter = async()=> {
     const res = await getWriterInfo(id);
-console.log(res);
 
     setWriter(res);
   };
 
   const handleFollow = async()=> {
     const res = await followWriter(id, user?.token);
-    console.log(res)
     if(res.success === true)fetchWriter();
   };
 

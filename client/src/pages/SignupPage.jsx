@@ -68,7 +68,7 @@ const SignupPage = () => {
 
   useEffect(()=>{
     file && uploadFile(setFileURL, file);
-  },[])
+  },[file])
 
   return (
   <div className="flex w-full h-[100vh]">
@@ -77,7 +77,7 @@ const SignupPage = () => {
           <img
             src={fileURL || file}
             alt=''
-            classN ame='w-16 h-16 rounded-full'
+            className='w-16 h-16 rounded-full'
           />
         )}
         <Logo type='sigin' />

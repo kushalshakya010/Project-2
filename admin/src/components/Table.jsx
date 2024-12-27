@@ -1,10 +1,10 @@
 import { Table } from "@mantine/core"
 import { formatNumber, getInitials} from "../utils"
-import moment from "moment";
+import * as moment from 'moment/moment'
 
 export const RecentFollowersTable = ({data, theme})=> {
-    const tableData = data?.map(({_id, createdAt, followersId: follower}) => (
-        <Table key={_id}
+    const tableData = data?.map(({_id, createdAt, followerId: follower}) => (
+        <Table.Tr key={_id}
                className={theme? "text-gray-400" : "text-slate-600"}
         >
             <Table.Td className="flex gap-2 items-center">
@@ -26,7 +26,7 @@ export const RecentFollowersTable = ({data, theme})=> {
                 <div className="flex gap-3 items-center">
                     <span className="text-sm text-rose-600">{follower.accountType}</span>
                     {
-                        follower.folowers.length > 0 && (
+                        follower.followers.length > 0 && (
                             <span className="text-sm to-slate-600 font-bold">{formatNumber(follower.followers.length)}</span>
                         )
                     }
@@ -34,13 +34,13 @@ export const RecentFollowersTable = ({data, theme})=> {
                 </>
             </Table.Td>
                 <Table.Td>
-                    {moment(createdAt).fromNow}
+                    {moment(createdAt).fromNow()}
                 </Table.Td>
-        </Table>
+        </Table.Tr>
     ));
 
     return (
-    <Table highlightOnHover withColumnBorders>
+    <Table highlightOnHover withColumnBorders withTableBorder>
         <Table.Thead>
             <Table.Tr>
                 <Table.Th>Followers</Table.Th>
@@ -64,7 +64,7 @@ export const RecentPostTable = ({data, theme}) => {
                     <img 
                      src={el?.img}
                      alt={el?.title}
-                     className="w-10 h-10 rounded-full origin-conver"
+                     className="w-10 h-10 rounded-full origin-cover"
                     />               
                 <>
                     <p className="text-base">{el?.title}</p>
@@ -77,7 +77,7 @@ export const RecentPostTable = ({data, theme}) => {
     ));
 
     return (
-        <Table highlightOnHover withTableBorder>
+        <Table highlightOnHover withColumnBorders withTableBorder>
         <Table.Thead>
             <Table.Tr>
                 <Table.Th>Post Title</Table.Th>

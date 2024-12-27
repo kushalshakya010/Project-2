@@ -14,7 +14,6 @@ const PostComments = ({ postId }) => {
 
   const fetchComments = async() => {
     const res = await getPostComments(postId);
-    console.log(res)
     setComments(res);
 
   };

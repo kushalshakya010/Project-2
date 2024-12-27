@@ -9,7 +9,7 @@ const Banner = ({ post }) => {
           <img
             src={post?.img}
             alt='Banner Image'
-            className='w-full md:w-3/4 h-64 md:h-[420px] 2xl:h-[560px] rounded'
+            className='w-full md:w-3/4 h-64 md:h-[420px] 2xl:h-[560px] object-cover rounded'
           />
         </Link>
 

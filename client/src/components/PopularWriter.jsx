@@ -26,7 +26,7 @@ const PopularWriters = ({ data }) => {
             </span>
             <span className='text-rose-800 font-medium'>
               {formatNumber(el?.followers)}{" "}
-              <span className='text-gray-600'>Folloers</span>
+              <span className='text-gray-600'>Followers</span>
             </span>
           </div>
         </Link>

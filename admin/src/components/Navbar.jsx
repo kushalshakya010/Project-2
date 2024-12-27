@@ -1,4 +1,4 @@
-import { Button, Drawer, Menu, MenuDivider, rem, useMantineColorScheme} from '@mantine/core';
+import { Button, Drawer, Menu, MenuDivider, UnstyledButton, rem, useMantineColorScheme} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import clsx from "clsx";
 import React from 'react';
@@ -34,22 +34,17 @@ const MobileDrawer = ({theme})=> {
         <Sidebar close = {close} />
 
         <div className='w-full mt-10'>
-          <UserMenu user = {user?.user} themee={theme} />
+          <UserMenu user = {user?.user} theme={theme} />
         </div>
 
-        <Button
-          onClick = {open}
-          className={theme? "text-white" : "text-slate-800"}>
-
-            <BiMenu className="text-xl" /> 
-        </Button>      
+        
     </Drawer>
 
-    <Button className={theme? "text-white" : "text-slate-800"}
+    <UnstyledButton className={theme? "text-white" : "text-slate-800"}
             onClick={open}
     >
       <BiMenu className='text-xl' />
-    </Button>
+    </UnstyledButton>
     </>
   );
 
@@ -64,17 +59,21 @@ const UserMenu = (user, theme) =>{
   };
 
   return (
-    <Menu shadow="md" width={200}>
+
+    <Menu shadow="md" width={200}>          
+
         <Menu.Target>
-          <Button className={clsx("flex items-center", theme? "text-gray-300" : "text-black")}>
-            <img src={user?.image} alt="Profile" className='w-8 h-8 rounded-full'/>
+          
+          <UnstyledButton className={clsx("flex items-center", theme ? "text-gray-300" : "text-black")}>
+
+            <img src={user?.user?.image} alt="Profile" className='w-8 h-8 rounded-full'/>
 
             <div className='flex flex-col items-start ml-1'>
-              <p className='font-medium'>{user.name}</p>
-              <span className='text-sm font-normal'>{user.accountType}</span>
+              <p className='font-medium'>{user?.user?.name}</p>
+              <span className='text-sm font-normal'>{user?.user?.accountType}</span>
 
             </div>
-          </Button>
+          </UnstyledButton>
         </Menu.Target>
             <Menu.Dropdown>
             <Menu.Label>Application</Menu.Label>

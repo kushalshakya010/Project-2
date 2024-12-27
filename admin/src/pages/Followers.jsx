@@ -25,8 +25,7 @@ const Followers = () => {
     toggle,
     user?.token
   );
-
-  console.log(data)
+console.log(data);
   const [page, setPage ] = useState(searchParams.get("page") || 1);
 
   const theme = colorScheme === "dark";
@@ -70,11 +69,18 @@ const Followers = () => {
           >
             <Table.Td className="flex gap-2 items-center">
               {followerId.image ? (
+                <div className="flex gap-2">
+
                 <img 
                   src={followerId.image}
                   alt={followerId.name}
                   className="w-10 h-10 rounded-full object-cover"
                 />
+
+                {getInitials(followerId.name)}
+                </div>
+
+                
               ) : (
                 <p className="w-10 h-10 rounded-full felx items-center justify-center bg-indigo-700 text-white">
                     {getInitials(followerId.name)}

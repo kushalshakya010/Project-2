@@ -78,7 +78,7 @@ const BlogDetails = () => {
       <img
           src={post?.img}
           alt={post?.title}
-          className='w-full md:w-1/2 h-auto md:h-[360px] 2xl:h-[460px] rounded object-contain-cover'
+          className='w-full md:w-1/2 h-auto md:h-[360px] 2xl:h-[460px] rounded object-cover'
         />
 
     </div>

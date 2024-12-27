@@ -34,8 +34,8 @@ const Stats = ({ dt }) => {
             diff: 18,
         },
         {
-            title:"TOTAL VIEWS",
-            icon: "view",
+            title:"TOTAL WRITERS",
+            icon: "user",
             value: formatNumber(dt?.totalWriters ?? 0),
             diff: -30,
         },

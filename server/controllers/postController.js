@@ -206,7 +206,6 @@ export const commentPost = async (req, res, next) => {
     const { userId } = req.body.user;
     const { id } = req.params;
 
-    console.log(req.body, userId, id)
 
     if (desc === null) {
       return res.status(404).json({ message: "Comment is required." });
@@ -256,7 +255,6 @@ export const updatePost = async (req, res, next) => {
 
 export const getPosts = async (req, res, next) => {
   try {
-    console.log(req.query);
     const { cat, writerId } = req.query;
 
     let query = { status: true };
@@ -281,7 +279,6 @@ export const getPosts = async (req, res, next) => {
 
     //records count
     const totalPost = await Posts.countDocuments(queryResult);
-    console.log(totalPost);
 
     const numOfPages = Math.ceil(totalPost / limit);
 
@@ -348,7 +345,6 @@ export const getPopularContents = async (req, res, next) => {
         $limit: 5,
       },
     ]);
-    console.log(writers)
 
     res.status(200).json({
       success: true,

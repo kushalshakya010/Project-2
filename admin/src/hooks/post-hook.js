@@ -49,7 +49,6 @@ export const useCreatePost = (toast, toggle, token)=> {
                     }
                 }
             );
-            console.log(data)
             return data;
         },
 

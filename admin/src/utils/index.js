@@ -43,8 +43,6 @@ export const uploadFIle = (setFileUrl, file) => {
 };
 
 export function formatNumber(num) {
-    console.log("----------------------------------------------");
-    console.log(num);
     if(num >= 1000000) {
         return (num / 1000000 ).toFixed(1) + "M";
     } else if (num >= 1000) {
@@ -54,6 +52,7 @@ export function formatNumber(num) {
 }
 
 export function getInitials(fullName) {
+    console.log(fullName);
     const names = fullName.split(" ");
     const initials = names.slice(0, 2).map((name) => name[0].toUpperCase());
     const initialsStr = initials.join(" ");
